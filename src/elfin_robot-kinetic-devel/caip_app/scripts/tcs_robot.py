@@ -126,6 +126,15 @@ class Tcs_robot():
         self.call_ref_coordinate = rospy.ServiceProxy('elfin_basic_api/get_reference_link', SetBool)
         self.call_ref_coordinate_req = SetBoolRequest()
 
+        # get the current position of elfin_ros_control from the response of this service.
+        self.call_current_position = rospy.ServiceProxy('elfin_ros_control/elfin/get_current_position', SetBool)
+        self.call_current_position_req = SetBoolRequest()
+
+        # call service recognize_position of elfin_ros_control.
+        self.call_recognize_position = rospy.ServiceProxy('elfin_ros_control/elfin/recognize_position', SetBool)
+        self.call_recognize_position_req = SetBoolRequest()
+        self.call_recognize_position_req.data = True
+
         # get the end coordinate name of elfin_basic_api from the response of this service.
         self.call_end_coordinate = rospy.ServiceProxy('elfin_basic_api/get_end_link', SetBool)
         self.call_end_coordinate_req = SetBoolRequest()
@@ -233,35 +242,35 @@ class Tcs_robot():
     # call for service of power off
     def want_disable_robot(self):
         resp = self.call_power_off.call(self.call_power_off_req)
-        return resp
+        return resp.success, resp.message
 
     # call for service of power on 
     def want_enable_robot(self):
         resp = self.call_power_on.call(self.call_velocity_req)
-        return resp
+        return resp.success, resp.message
 
     # call for service of power on
     def want_power_on(self):
         resp = self.call_power_on.call(self.call_power_on_req)
-        return resp
+        return resp.success, resp.message
 
     # call for service of home
     def want_home(self):
         self.call_move_homing_req.data = True
         resp=self.call_move_homing.call(self.call_move_homing_req)
-        print(resp)
+        return resp.success, resp.message
 
     # call for service of home
     def want_cart(self, data):
         self.call_teleop_cart_req.data =data
         resp=self.call_teleop_cart.call(self.call_teleop_cart_req)
-        print(resp)
+        return resp.success, resp.message
 
     # call for service of home
     def want_stop(self):
         self.call_teleop_stop_req.data=True
         resp=self.call_teleop_stop.call(self.call_teleop_stop_req)
-        print(resp)
+        return resp.success, resp.message
 
     # call for service of setting velocity
     def set_velocity_scale(self, scale):
@@ -270,6 +279,7 @@ class Tcs_robot():
         if resp.success is True:
             self._velocity_scale = scale
         pass
+        return resp.success, resp.message
 
     # get current velocity_scale
     def get_velocity_scale(self):
@@ -431,6 +441,7 @@ class Tcs_robot():
         if resp.success:
             self._end_coordinate(resp)
         #print(resp)
+        return resp.success, self.EndCoordinate
 
     # call service of ref_link
     def want_ref_coordinate(self):
@@ -438,7 +449,20 @@ class Tcs_robot():
         resp = self.call_ref_coordinate.call(self.call_ref_coordinate_req)
         if resp.success:
             self._ref_coordinate(resp)
+        return resp.success, self.RefCoordinate
         #print(resp)
+
+    # call service of current positions
+    def want_current_pos(self):
+        self.call_current_position_req.data = True
+        resp = self.call_current_position.call(self.call_current_position_req)
+        return resp.success, resp.message
+
+    # call service of recognize positions
+    def want_recognize_pos(self):
+        self.call_recognize_position_req.data = True
+        resp = self.call_recognize_position.call(self.call_recognize_position_req)
+        return resp.success, resp.message
 
     # callback of subscribing joints_state
     def _joints_state(self, data):
