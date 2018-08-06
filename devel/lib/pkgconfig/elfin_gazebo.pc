@@ -1,0 +1,8 @@
+prefix=/home/chouer/workspace/rospace/elfin_robot/devel
+
+Name: elfin_gazebo
+Description: Description of elfin_gazebo
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/chouer/workspace/rospace/elfin_robot/devel/lib 
+Requires: 

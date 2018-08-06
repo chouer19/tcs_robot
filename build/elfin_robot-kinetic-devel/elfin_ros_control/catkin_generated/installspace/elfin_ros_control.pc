@@ -1,0 +1,8 @@
+prefix=/home/chouer/workspace/rospace/elfin_robot/install
+
+Name: elfin_ros_control
+Description: Description of elfin_ros_control
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/chouer/workspace/rospace/elfin_robot/install/lib 
+Requires: 

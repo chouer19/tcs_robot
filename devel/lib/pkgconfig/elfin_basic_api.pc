@@ -1,0 +1,8 @@
+prefix=/home/chouer/workspace/rospace/elfin_robot/devel
+
+Name: elfin_basic_api
+Description: Description of elfin_basic_api
+Version: 0.0.0
+Cflags: -I/home/chouer/workspace/rospace/elfin_robot/devel/include -I/home/chouer/workspace/rospace/elfin_robot/src/elfin_robot-kinetic-devel/elfin_basic_api/include
+Libs: -L/home/chouer/workspace/rospace/elfin_robot/devel/lib -lelfin_basic_api
+Requires: moveit_core moveit_ros_planning moveit_ros_planning_interface roscpp rospy tf tf_conversions

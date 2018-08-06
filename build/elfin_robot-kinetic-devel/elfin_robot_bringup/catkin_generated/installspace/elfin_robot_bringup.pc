@@ -1,0 +1,8 @@
+prefix=/home/chouer/workspace/rospace/elfin_robot/install
+
+Name: elfin_robot_bringup
+Description: Description of elfin_robot_bringup
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/chouer/workspace/rospace/elfin_robot/install/lib 
+Requires: 

@@ -1,0 +1,8 @@
+prefix=/home/chouer/workspace/rospace/elfin_robot/devel
+
+Name: caip_app
+Description: Description of caip_app
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/chouer/workspace/rospace/elfin_robot/devel/lib -lcaip_app
+Requires: moveit_core moveit_ros_planning moveit_ros_planning_interface roscpp rospy tf tf_conversions

@@ -1,0 +1,8 @@
+prefix=/home/chouer/workspace/rospace/elfin_robot/devel
+
+Name: elfin3_moveit_config
+Description: Description of elfin3_moveit_config
+Version: 0.3.0
+Cflags: 
+Libs: -L/home/chouer/workspace/rospace/elfin_robot/devel/lib 
+Requires: 

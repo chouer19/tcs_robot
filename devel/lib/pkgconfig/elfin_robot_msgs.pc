@@ -1,0 +1,8 @@
+prefix=/home/chouer/workspace/rospace/elfin_robot/devel
+
+Name: elfin_robot_msgs
+Description: Description of elfin_robot_msgs
+Version: 0.0.0
+Cflags: -I/home/chouer/workspace/rospace/elfin_robot/devel/include
+Libs: -L/home/chouer/workspace/rospace/elfin_robot/devel/lib 
+Requires: message_generation message_runtime std_msgs
